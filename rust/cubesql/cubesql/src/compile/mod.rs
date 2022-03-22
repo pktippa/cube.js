@@ -46,7 +46,8 @@ use self::parser::parse_sql_to_statement;
 use crate::compile::engine::udf::{
     create_date_add_udf, create_date_sub_udf, create_date_udf, create_dayofmonth_udf,
     create_dayofweek_udf, create_dayofyear_udf, create_hour_udf, create_makedate_udf,
-    create_measure_udaf, create_minute_udf, create_quarter_udf, create_second_udf, create_year_udf,
+    create_measure_udaf, create_minute_udf, create_quarter_udf, create_second_udf,
+    create_str_to_date, create_year_udf,
 };
 use crate::compile::rewrite::LogicalPlanToLanguageConverter;
 
@@ -1993,6 +1994,7 @@ WHERE `TABLE_SCHEMA` = '{}'",
         ctx.register_udf(create_dayofyear_udf());
         ctx.register_udf(create_date_sub_udf());
         ctx.register_udf(create_date_add_udf());
+        ctx.register_udf(create_str_to_date());
 
         ctx.register_udaf(create_measure_udaf());
 
@@ -3137,8 +3139,14 @@ mod tests {
                 {}
                 FROM KibanaSampleDataEcommerce
                 WHERE {}
-                GROUP BY __timestamp",
-                sql_projection, sql_filter
+                {}",
+                sql_projection,
+                sql_filter,
+                if sql_projection.contains("__timestamp") {
+                    "GROUP BY __timestamp"
+                } else {
+                    ""
+                }
             ))
             .as_logical_plan();
 
@@ -3464,8 +3472,7 @@ mod tests {
                 "SELECT
                 COUNT(*)
                 FROM KibanaSampleDataEcommerce
-                WHERE {}
-                GROUP BY __timestamp",
+                WHERE {}",
                 sql
             ))
             .as_logical_plan();
