@@ -29,6 +29,8 @@
   "author": "Cube Dev, Inc.",
   "dependencies": {
     "@babel/runtime-corejs2": "^7.0.0",
+    "@cubejs-client/core": "^0.29.33",
+    "@cubejs-client/react": "^0.29.33",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "core-js": "^3.6.5",
     "ramda": "^0.27.0",

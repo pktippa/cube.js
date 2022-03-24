@@ -7,7 +7,7 @@ import { Dropdown, Layout, Menu } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import XafeSmLogo from '../../img/db/XafeSmLogo';
 import { DiscourseIcon } from '../../shared/icons/DiscourseIcon';
 import { StyledMenu, StyledMenuButton, StyledMenuItem } from './Menu';
 import { RunOnCubeCloud } from './RunOnCubeCloud';
@@ -34,11 +34,7 @@ export default function Header({ selectedKeys }) {
   return (
     <StyledHeader>
       <div style={{ float: 'left' }}>
-        <img
-          src="./cubejs-playground-logo.svg"
-          style={{ height: 28, marginRight: 28 }}
-          alt=""
-        />
+        <XafeSmLogo />
       </div>
 
       {isDesktopOrLaptop && (
@@ -47,7 +43,7 @@ export default function Header({ selectedKeys }) {
             <Link to="/build">Build</Link>
           </StyledMenuItem>
 
-          <StyledMenuItem key="/dashboard">
+          {/* <StyledMenuItem key="/dashboard">
             <Link to="/dashboard">Dashboard App</Link>
           </StyledMenuItem>
 
@@ -83,7 +79,7 @@ export default function Header({ selectedKeys }) {
             Docs
           </StyledMenuButton>
 
-          <RunOnCubeCloud />
+          <RunOnCubeCloud /> */}
         </StyledMenu>
       )}
 
