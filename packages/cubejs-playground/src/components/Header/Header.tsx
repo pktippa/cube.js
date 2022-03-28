@@ -12,6 +12,8 @@ import { DiscourseIcon } from '../../shared/icons/DiscourseIcon';
 import { StyledMenu, StyledMenuButton, StyledMenuItem } from './Menu';
 import { RunOnCubeCloud } from './RunOnCubeCloud';
 
+import XafeLogo from '../../img/db/XafeLogo';
+
 const StyledHeader = styled(Layout.Header)`
   && {
     background-color: var(--dark-02-color);
@@ -34,11 +36,7 @@ export default function Header({ selectedKeys }) {
   return (
     <StyledHeader>
       <div style={{ float: 'left' }}>
-        <img
-          src="./cubejs-playground-logo.svg"
-          style={{ height: 28, marginRight: 28 }}
-          alt=""
-        />
+        <XafeLogo />
       </div>
 
       {isDesktopOrLaptop && (
@@ -47,7 +45,7 @@ export default function Header({ selectedKeys }) {
             <Link to="/build">Build</Link>
           </StyledMenuItem>
 
-          <StyledMenuItem key="/dashboard">
+          {/* <StyledMenuItem key="/dashboard">
             <Link to="/dashboard">Dashboard App</Link>
           </StyledMenuItem>
 
@@ -83,7 +81,7 @@ export default function Header({ selectedKeys }) {
             Docs
           </StyledMenuButton>
 
-          <RunOnCubeCloud />
+          <RunOnCubeCloud /> */}
         </StyledMenu>
       )}
 
@@ -95,12 +93,12 @@ export default function Header({ selectedKeys }) {
                 <Menu.Item key="/build">
                   <Link to="/build">Build</Link>
                 </Menu.Item>
-                <Menu.Item key="/dashboard">
+                {/* <Menu.Item key="/dashboard">
                   <Link to="/dashboard">Dashboard App</Link>
                 </Menu.Item>
                 <Menu.Item key="/schema">
                   <Link to="/schema">Schema</Link>
-                </Menu.Item>
+                </Menu.Item> */}
               </Menu>
             }
           >
